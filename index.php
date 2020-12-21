@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Php Bad Word</title>
+    <title>Document</title>
     <style>
         body {
             width: 100vw;
@@ -19,13 +19,28 @@
     </style>
 </head>
 <body>
-        <!--creo le variabili  -->
+     <!--creo le variabili  -->
     <?php
 $name = 'Ciao mi chiamo Salvatore';
-$replace = str_ireplace($_GET['badword'], '***', $name);
+$badword = $_GET['badword'];
+$replace = str_ireplace($badword, '***', $name);
+?>
+
+<!-- BONUS condizione badword vuota con stile diverso -->
+<?php 
+    if($badword == '') {
+        $badword = "<h2 style='background-color: red; color: black'>" . "Nessun valore inserito" . '</h2>';
+      
+    }
+    else {
+      $badword = "<h2 style='background-color: yellow; color: black'>" . "Badword: " . $badword . '</h2>';
+        
+    }
 ?>
 
 <div>
+<!-- badword output -->
+<h3><?php echo $badword; ?></h3>
 <!-- prima paragrafo -->
 <h1>
   <?php echo $name;?> 
